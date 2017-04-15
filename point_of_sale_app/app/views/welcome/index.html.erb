@@ -1,2 +1,7 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<h1>Welcome <%= @user.first_name %> <%= @user.last_name %>!</h1>
+<ul>
+	<% if @user.role == 'manager' %>
+	<li><%= link_to('Manage Employees', users_path)%></li>
+	<% end %>
+	<li><%= link_to('View Inventory', products_path)%></li>
+</ul>
