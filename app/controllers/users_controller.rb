@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :verify_manager
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -71,5 +72,11 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:first_name, :last_name, :password, :email, :role)
+    end
+    
+    def verify_manager
+      unless current_user.role == 'manager'
+        redirect_to root_path, flash: {notice: 'You are not authorized to view that information.'}
+      end
     end
 end
