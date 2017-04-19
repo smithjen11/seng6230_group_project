@@ -8,6 +8,7 @@
       <th>Name</th>
       <th>Description</th>
       <th>Count</th>
+      <th>Price</th>
     </tr>
   </thead>
 
@@ -17,6 +18,7 @@
         <td><%= product.name %></td>
         <td><%= product.description %></td>
         <td><%= product.count %></td>
+        <td>$<%= '%.2f' % product.price %></td>
       </tr>
     <% end %>
   </tbody>

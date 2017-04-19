@@ -3,4 +3,5 @@ User.where(email: 'employee@business.com', first_name: 'Jack', last_name: 'Phili
 
 (1..100).each do |i|
   Product.where(name: 'Item'+i.to_s, description: 'description'+i.to_s, count: 25%i).first_or_create
+  Product.find(i).update(price: ((17.to_f/(i+1).to_f)/3.to_f)*100.to_f)
 end

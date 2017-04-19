@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  payment_total: 9.99
+  payment_type: MyString
+  employee: MyString
+
+two:
+  payment_total: 9.99
+  payment_type: MyString
+  employee: MyString
