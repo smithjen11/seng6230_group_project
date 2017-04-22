@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'orders/get_product_information', to: 'orders#get_product_information'
+  
   resources :orders
   resources :products
   resources :users

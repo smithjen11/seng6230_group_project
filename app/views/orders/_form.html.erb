@@ -10,20 +10,45 @@
       </ul>
     </div>
   <% end %>
+  
 
-  <div class="field">
+  <%= f.fields_for :order_products do |product_form| %>
+    <div class="form-group">
+      <%= product_form.label 'Name' %><br>
+      <% if @product %>
+      <%= product_form.select :id, options_for_select(@products, [@product.name, @product.id]), {prompt: 'Select product'}, {class: 'form-control', 'data-url': orders_get_product_information_url} %>
+	  <% else %>
+      <%= product_form.select :id, @products, {prompt: 'Select product'}, {class: 'form-control', 'data-url': orders_get_product_information_url} %>
+      <% end %>
+    </div>    
+    <div class="form-group">
+      <%= product_form.label 'Number of Items' %><br>
+      <% if @order_product %>
+      <%= product_form.select :product_count, [], {prompt: 'Select number of products'}, {class: 'form-control', 'data-count': @order_product.product_count } %>
+      <% else %>
+      <%= product_form.select :product_count, [], {prompt: 'Select number of products'}, {class: 'form-control', 'data-count': '' } %>
+      <% end %>
+    </div>
+    <%= product_form.hidden_field 'price', disabled: true %>
+  <% end %>
+ 
+  <div class="form-group">
     <%= f.label :payment_total %><br>
-    <%= f.text_field :payment_total %>
+    <div class="input-group">
+      <div class="input-group-addon">$</div>
+	  <% if @order %>
+	  <%= f.text_field :payment_total, value: @order.payment_total, class: 'form-control', readonly: true %>
+	  <% else %>
+	  <%= f.text_field :payment_total, value: '0.00', class: 'form-control', readonly: true %>
+	  <% end %>
+    </div>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :payment_type %><br>
-    <%= f.text_field :payment_type %>
+    <%= f.select :payment_type, ['Credit Card', 'Debit Card', 'Cash'], {prompt: 'Select payment type'}, {class: 'form-control'} %>
   </div>
-  <div class="field">
-    <%= f.label :employee %><br>
-    <%= f.text_field :employee %>
-  </div>
+  <%= f.hidden_field :employee, value: "#{@user.first_name} #{@user.last_name}" %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Submit', {class: 'btn btn-default'} %>
   </div>
 <% end %>

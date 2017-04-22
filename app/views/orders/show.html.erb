@@ -1,8 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Transaction date:</strong>
+  <%= @order.created_at.strftime("%Y-%m-%d") %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @product.name %> ($<%= @product.price.round(2) %>)
+</p>
+
+<p>
+  <strong>Number of products:</strong>
+  <%= @order_product.product_count %>
+</p>
+
+<p>
   <strong>Payment total:</strong>
-  <%= @order.payment_total %>
+  $<%= @order.payment_total %>
 </p>
 
 <p>
