@@ -1,9 +1,11 @@
-<h1>Welcome <%= @user.first_name %> <%= @user.last_name %>!</h1>
-<ul>
-	<% if @user.role == 'manager' %>
-	<li><%= link_to('Manage Employees', users_path)%></li>
-	<% end %>
-	<li><%= link_to('View Inventory', products_path)%></li>
-	<li><%= link_to('Create Order', new_order_path)%></li>
-	<li><%= link_to('View Orders', orders_path)%></li>
+<div class="panel-heading text-center">
+  <h1>Welcome <%= @user.first_name %> <%= @user.last_name %>!</h1>
+</div>
+<ul class="list-group">
+  <% if @user.role == 'manager' %>
+  <li class="list-group-item"><h3><%= link_to('Manage Employees', users_path)%></h3></li>
+  <% end %>
+  <li class="list-group-item"><h3><%= link_to('View Inventory', products_path)%></h3></li>
+  <li class="list-group-item"><h3><%= link_to('Create Order', new_order_path)%></h3></li>
+  <li class="list-group-item"><h3><%= link_to('View Orders', orders_path)%></h3></li>
 </ul>
