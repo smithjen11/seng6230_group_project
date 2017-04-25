@@ -1,0 +1,16 @@
+<h1>Request Report</h1>
+
+<%= form_tag('/reports', method: 'post') do %>
+  <div class="form-group">
+    <%= label_tag 'Start Date' %><br>
+    <%= date_select('report', 'start_date') %>
+  </div>
+  <div class="form-group">
+    <%= label_tag 'End Date' %><br>
+    <%= date_select('report', 'end_date') %>
+  </div>
+  
+  <div class="actions">
+    <%= submit_tag 'Submit', {class: 'btn btn-default'} %>
+  </div>
+<% end %>

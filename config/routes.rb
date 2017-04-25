@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'report', to: 'reports#new'
+  post 'reports', to: 'reports#create'
+  get 'reports', to: 'reports#show', as: :reports_show_path
+
   get 'orders/get_product_information', to: 'orders#get_product_information'
   
   resources :orders
