@@ -11,17 +11,39 @@
   <body>
     <div class="container">
       <div class="col-md-8 col-md-offset-2">
-	<div class="panel panel-default">
-	  <% unless current_page?(root_path) %>
-	  <%= link_to('Home', root_path) %>      
-	  <% end %>
-	  <% if user_signed_in? %>
-	  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-	  <% end %>
-	  
-	  <%= yield %>
-	</div>
-      </div>
-    </div>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">
+		<img alt="brand" src="...">
+	      </a>
+	    </div> <!-- navbar-header -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+		<li>
+		  <% unless current_page?(root_path) %>
+		  <%= link_to('Home', root_path) %>      
+		  <% end %>
+		</li>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+		<li>
+		  <% if user_signed_in? %>
+		  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+		  <% end %>
+		</li>
+	      </ul>
+	    </div> <!-- collapse -->
+	  </div> <!-- container-fluid -->
+	</nav>
+	<%= yield %>
+      </div> <!-- col-md-8 col-md-offset-2 -->
+    </div> <!-- container -->
   </body>
 </html>
